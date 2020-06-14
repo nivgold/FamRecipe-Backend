@@ -12,7 +12,7 @@ const users_route = require("./routes/users");
 const recipes_route = require("./routes/recipes");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 // letting all origins
 app.use(cors());

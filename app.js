@@ -15,7 +15,12 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // letting all origins
-app.use(cors());
+const corsConfig = {
+    origin: true,
+    credentials: true
+};
+app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
 
 // // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

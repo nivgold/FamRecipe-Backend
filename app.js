@@ -33,7 +33,10 @@ app.use(
         cookieName: "session",
         secret: process.env.COOKIE_SECRET,
         duration: 10 * 60 * 1000,
-        activeDuration: 5 * 60 * 1000 // want to add 5 min if cookie expireIn time < activeDuration,
+        activeDuration: 0,
+		cookie: {
+			httpOnly: false
+		}
     })
 );
 

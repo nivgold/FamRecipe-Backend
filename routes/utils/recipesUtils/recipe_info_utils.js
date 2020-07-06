@@ -24,6 +24,7 @@ function extractRelevantInfo(spooncular_response){
         readyInMinutes,
         aggregateLikes,
         vegetarian,
+        vegan,
         glutenFree,
         servings
     } = spooncular_response;
@@ -40,6 +41,7 @@ function extractRelevantInfo(spooncular_response){
         ready_in_minutes: readyInMinutes,
         popularity: aggregateLikes,
         vegetarian: vegetarian,
+        vegan: vegan,
         gluten_free: glutenFree,
         ingredients: ingredients,
         instructions: instructions,

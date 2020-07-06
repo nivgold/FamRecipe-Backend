@@ -3,7 +3,7 @@
 INSERT INTO [dbo].[user] ([user_id], [username], [password], [first_name], [last_name], [country], [email], [image])
 VALUES ('51f2a120-a59f-11ea-b43b-2b8d71f22f9e',
         'nivgold',
-        '$2a$14$m/6qi.9vvPo5IPb58fbWju3NhFHOicmhYfH.4XcspT/9wn5IuXvDi',
+        '$2y$14$HaqDcyNJh4eS2l7yoaL54e818TU/W7v13tJT2K0sXE1.BEfOh2v/2',
         'Niv',
         'Goldshlager',
         'Israel',
@@ -13,8 +13,8 @@ VALUES ('51f2a120-a59f-11ea-b43b-2b8d71f22f9e',
 -- Ron
 INSERT INTO [dbo].[user] ([user_id], [username], [password], [first_name], [last_name], [country], [email], [image])
 VALUES ('5b0bbb20-a59f-11ea-b43b-2b8d71f22f9e',
-        'ronisrael',
-        '$2a$14$7AaV.bDMrbWoijzcnK.zqeTzQBXVTLhwFVySrPb/1iC5e2XlsWBWy',
+        'ron',
+        '$2y$14$1oxoFYre.oL4TVLSBG1d4OxucBAaPleygurRSAESebX3E674Z9WnK',
         'Ron',
         'Israel',
         'Israel',

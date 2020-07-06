@@ -12,12 +12,12 @@ const users_route = require("./routes/users");
 const recipes_route = require("./routes/recipes");
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5001;
 
 // letting all origins
 const corsConfig = {
-    origin: true,
-    credentials: true
+	origin: true,
+	credentials: true
 };
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
@@ -32,13 +32,13 @@ app.use(morgan('dev'));
 
 // ---------App Configurations------------
 
-// settings coockie middleware
+// settings coockies middleware
 app.use(
     session({
         cookieName: "session",
         secret: process.env.COOKIE_SECRET,
         duration: 10 * 60 * 1000,
-        activeDuration: 0,
+        activeDuration: 5 * 60 * 1000, // want to add 5 min if cookie expireIn time < activeDuration,
 		cookie: {
 			httpOnly: false
 		}

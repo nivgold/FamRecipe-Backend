@@ -30,6 +30,7 @@ CREATE TABLE [dbo].[personal_recipe](
     [ready_in_minutes] [int] NOT NULL,
     [popularity] [int] NOT NULL DEFAULT 0,
     [vegetarian] [BIT] NOT NULL DEFAULT 0,
+    [vegan] [BIT] NOT NULL DEFAULT 0,
     [gluten_free] [BIT] NOT NULL DEFAULT 0,
     [ingredients_json_array] [varchar](2500) NOT NULL,
     [instructions_json_array] [varchar](2000) NOT NULL,

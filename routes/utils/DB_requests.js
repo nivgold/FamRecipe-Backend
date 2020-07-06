@@ -18,7 +18,7 @@ const getUserByID = async function (user_id){
     return db_response[0];
 };
 
-const getUserRecipesInfo = async function(user_id, ids){
+const getUserRecipesInfo = async function(user_id){
     const query = `select favorite_recipes_json_array AS favorites, watched_recipes_json_array AS watched 
                    from [dbo].[user] where user_id = '${user_id}'`;
     db_response = await db.executeQuery(query);
@@ -33,6 +33,7 @@ const getPersonalRecipes = async function (user_id){
                           [dbo].[personal_recipe].ready_in_minutes,
                           [dbo].[personal_recipe].popularity,
                           [dbo].[personal_recipe].vegetarian,
+                          [dbo].[personal_recipe].vegan,
                           [dbo].[personal_recipe].gluten_free
                    from [dbo].[personal_recipe] INNER JOIN [dbo].[user]
                    ON [dbo].[personal_recipe].user_id = [dbo].[user].user_id
@@ -62,7 +63,9 @@ const getFamilyRecipes = async function (user_id){
     const query = `select [dbo].[family_recipe].recipe_id AS id,
                           [dbo].[family_recipe].owner_name AS owner,
                           [dbo].[family_recipe].image,
-                          [dbo].[family_recipe].timing
+                          [dbo].[family_recipe].timing,
+                          [dbo].[family_recipe].ingredients_json_array,
+                          [dbo].[family_recipe].instructions
                     from [dbo].[family_recipe] INNER JOIN [dbo].[user]
                     ON [dbo].[family_recipe].user_id = [dbo].[user].user_id
                     where [dbo].[user].user_id = '${user_id}'`;
@@ -79,6 +82,7 @@ const getPersonalRecipeID = async function (user_id, personal_recipe_id){
                           [dbo].[personal_recipe].ready_in_minutes,
                           [dbo].[personal_recipe].popularity,
                           [dbo].[personal_recipe].vegetarian,
+                          [dbo].[personal_recipe].vegan,
                           [dbo].[personal_recipe].gluten_free,
                           [dbo].[personal_recipe].ingredients_json_array AS ingredients,
                           [dbo].[personal_recipe].instructions_json_array AS instructions,
@@ -142,10 +146,10 @@ const addFavoriteRecipe = async function(user_id, favorite_id){
 };
 
 const addPersonalRecipe = async function (user_id, personal_recipe){
-    let {image, title, ready_in_minutes, popularity, vegetarian, gluten_free, ingredients, instructions, meals} = personal_recipe;
+    let {image, title, ready_in_minutes, popularity, vegetarian, vegan, gluten_free, ingredients, instructions, meals} = personal_recipe;
     const insert_query = `insert into [dbo].[personal_recipe]
-                          (user_id, image, title, ready_in_minutes, popularity, vegetarian, gluten_free, ingredients_json_array, instructions_json_array, meals)
-                          values ('${user_id}', '${image}', '${title}', ${ready_in_minutes}, '${popularity}', '${vegetarian}', '${gluten_free}', '${JSON.stringify(ingredients)}', '${JSON.stringify(instructions)}', ${meals});`;
+                          (user_id, image, title, ready_in_minutes, popularity, vegetarian, vegan, gluten_free, ingredients_json_array, instructions_json_array, meals)
+                          values ('${user_id}', '${image}', '${title}', ${ready_in_minutes}, '${popularity}', '${vegetarian}', '${vegan}', '${gluten_free}', '${JSON.stringify(ingredients)}', '${JSON.stringify(instructions)}', ${meals});`;
     await db.executeUpdate(insert_query);
 };
 

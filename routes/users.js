@@ -87,7 +87,9 @@ router.get("/lastWatchedRecipes", async (req, res) => {
 
     // checking that the user has last watched recipes
     if (last_watched_recipes){
-        res.status(200).json(last_watched_recipes);
+        // getting the last wathed recipes preview information
+        let last_watched_recipes_info = await recipes_search_utils.getRecipesInfo(last_watched_recipes);
+        res.status(200).json(last_watched_recipes_info);
     }
     else{
         res.sendStatus(204);
@@ -242,6 +244,9 @@ router.get("/familyRecipes", async (req, res) => {
 
     // checking that the user habve family recipes
     if(family_recipes){
+        family_recipes.map((x) => {
+            x.ingredients = JSON.parse(x.ingredients_json_array);
+        });
         res.status(200).json(family_recipes);
     }
     else{

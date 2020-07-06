@@ -35,7 +35,7 @@ async function spooncularRandomRecipes(number){
 
 function isInstructionsMissing(recipes_array){
     
-    let found = recipes_array.find(recipe => recipe.instructions.length == 0);
+    let found = recipes_array.find(recipe => recipe.instructions.length == 0 || !recipe.image);
 
     if (found){
         return true;

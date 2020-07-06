@@ -24,7 +24,8 @@ function extractPreviewInfo(spooncular_response){
         title, 
         readyInMinutes, 
         aggregateLikes, 
-        vegetarian, 
+        vegetarian,
+        vegan,
         glutenFree} = spooncular_response;
 
     return {
@@ -34,6 +35,7 @@ function extractPreviewInfo(spooncular_response){
         ready_in_minutes: readyInMinutes,
         popularity: aggregateLikes,
         vegetarian: vegetarian,
+        vegan: vegan,
         gluten_free: glutenFree
     }
 }

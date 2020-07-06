@@ -72,6 +72,7 @@ function extarctRecipeInfoData(info_response){
             readyInMinutes,
             aggregateLikes,
             vegetarian,
+            vegan,
             glutenFree
         } = recipe_info.data;
 
@@ -83,6 +84,7 @@ function extarctRecipeInfoData(info_response){
             ready_in_minutes: readyInMinutes,
             popularity: aggregateLikes,
             vegetarian: vegetarian,
+            vegan: vegan,
             gluten_free: glutenFree
         }
 
